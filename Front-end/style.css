@@ -1,0 +1,107 @@
+body{
+    background-color: #f7f3e9;
+
+}
+
+.header {
+  padding: 0px;
+  text-align: center;
+  background: #5f939a;
+  border-radius: 5px;
+  font-size: 25px;
+  font-family: 'Roboto', sans-serif;
+  color: #f7f3e9;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+/* light */
+#detail{
+  padding: 10px;
+  margin: 0px;
+  background-color: #5f939a;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+/* sprinkler */
+#details{
+  padding: 20px;
+  padding-top: 9px;
+  padding-right: 3px;
+  padding-bottom: 10px;
+  padding-left: 8px;
+  margin: 0px;
+  border-radius: 4px;
+  background-color: #5f939a;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+/* AC */
+#detai{
+  padding: 10px;
+  margin: 0px;
+  border-radius: 4px;
+  background-color: #5f939a;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+/* Fan */
+#detaill{
+    padding: 10px;
+    margin: 0px;
+    border-radius: 4px;
+    background-color: #5f939a;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#states{
+    padding:10px;
+
+}
+
+.state-card{
+    padding:1px;
+    border-radius: 5px;
+
+
+}
+
+.state-card>.label{
+    font-size:20px;
+    margin-bottom:5px;
+    color: #f3f4ed;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.off-button {
+  background-color: #1b2021;
+  border: none;
+  color: #f3f4ed;
+  padding: 5px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.on-button {
+  background-color: #f3f4ed;
+  border: none;
+  color: #1b2021;
+  padding: 5px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+}

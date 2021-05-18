@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>smart home</title>
+
+    <link href="./style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="header" id="title">
+      <h1><center>Home Automation System with Smart Garden</center></h1>
+    </div>
+
+    <div class="container" id="states">
+      <div class="row">
+        <div class="card" id="detail">
+          <div class="card-body state-card">
+            <div class="label"><center>LIGHTS</center></div>
+            <p id="OUT_LEDTEXT"></p>
+            <button class="on-button" id="onLED_Btn" onclick="onLEDFunction()">
+              LED ON
+            </button>
+            <button class="off-button" id="offBtn" onclick="offLEDFunction()">
+              LED OFF
+            </button>
+          </div>
+        </div>
+
+        <div class="carddd" id="detaill">
+          <div class="card-body state-card">
+            <div class="label"><center>FAN</center></div>
+            <p id="OUT_FANTEXT"></p>
+            <button class="on-button" id="onBtn" onclick="onFANFunction()">
+              FAN ON
+            </button>
+            <button class="off-button" id="offBtn" onclick="offFANFunction()">
+              FAN OFF
+            </button>
+          </div>
+        </div>
+
+        <div class="cards" id="detai">
+          <div class="card-body state-card">
+            <div class="label"><center>AC</center></div>
+            <p id="OUT_ACTEXT"></p>
+            <button class="on-button" id="on_Btn" onclick="onACFunction()">
+              AC ON
+            </button>
+            <button class="off-button" id="off_Btn" onclick="offACFunction()">
+              AC OFF
+            </button>
+          </div>
+        </div>
+
+        <div class="cardd" id="details">
+          <div class="card-body state-card">
+            <div class="label"><center>SPRINKLER</center></div>
+            <p id="OUT_SPRINKLERTEXT"></p>
+            <button
+              class="on-button"
+              id="onBtn"
+              onclick="onSPRINKLERFunction()"
+            >
+              SPRINKLER ON
+            </button>
+            <button
+              class="off-button"
+              id="offBtn"
+              onclick="offSPRINKLERFunction()"
+            >
+              SPRINKLER OFF
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!---------------------------------------------------------------------- JAVASCRIPTS ------------------------------------------------------------------------------>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-database.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        //Enter your firebase web-apps's configuration
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+
+      //--------------------------------------------------------------------- READING THE DATA ------------------------------------------------------------------>
+    </script>
+
+    <script>
+      var fanRef = firebase.database().ref("HOME").child("FAN_STATUS");
+
+      function onFANFunction() {
+        fanRef.set("ON");
+      }
+
+      function offFANFunction() {
+        fanRef.set("OFF");
+      }
+
+      fanRef.on(
+        "value",
+        function (snapshot) {
+          if (snapshot.val() == "ON") {
+            OUT_FANTEXT.innerText = "FAN is ON";
+          } else if (snapshot.val() == "OFF") {
+            OUT_FANTEXT.innerText = "FAN is OFF";
+          }
+        },
+        function (error) {
+          console.log("Error: " + error.code);
+        }
+      );
+    </script>
+
+    <script>
+      var ledRef = firebase.database().ref("HOME").child("LED_STATUS");
+
+      function onLEDFunction() {
+        ledRef.set("ON");
+      }
+
+      function offLEDFunction() {
+        ledRef.set("OFF");
+      }
+
+      ledRef.on(
+        "value",
+        function (snapshot) {
+          if (snapshot.val() == "ON") {
+            OUT_LEDTEXT.innerText = "LED is ON";
+          } else if (snapshot.val() == "OFF") {
+            OUT_LEDTEXT.innerText = "LED is OFF";
+          }
+        },
+        function (error) {
+          console.log("Error: " + error.code);
+        }
+      );
+
+      var ACRef = firebase.database().ref("HOME").child("AC_STATUS");
+
+      function onACFunction() {
+        ACRef.set("27°");
+      }
+
+      function offACFunction() {
+        ACRef.set("0");
+      }
+
+      ACRef.on(
+        "value",
+        function (snapshot) {
+          if (snapshot.val() == 27) {
+            OUT_ACTEXT.innerText = "AC is ON at 27°";
+          } else if (snapshot.val() == 0) {
+            OUT_ACTEXT.innerText = "AC is OFF";
+          }
+          else{
+            str = snapshot.val().toString(); 
+            OUT_ACTEXT.innerText = "AC is ON at " + str + "°";
+          }
+        },
+        function (error) {
+          console.log("Error: " + error.code);
+        }
+      );
+
+      var SPRINKLERRef = firebase.database().ref("HOME").child("SPRINKLER_STATUS");
+
+      function onSPRINKLERFunction() {
+        SPRINKLERRef.set("ON");
+      }
+
+      function offSPRINKLERFunction() {
+        SPRINKLERRef.set("OFF");
+      }
+
+      SPRINKLERRef.on(
+        "value",
+        function (snapshot) {
+          if (snapshot.val() == "ON") {
+            OUT_SPRINKLERTEXT.innerText = "SPRINKLER is ON";
+          } else if (snapshot.val() == "OFF") {
+            OUT_SPRINKLERTEXT.innerText = "SPRINKLER is OFF";
+          }
+        },
+        function (error) {
+          console.log("Error: " + error.code);
+        }
+      );
+
+    </script> 
+
+    </script>
+  </body>
+</html>
